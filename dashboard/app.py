@@ -39,7 +39,7 @@ st.markdown(PAGE_STYLE, unsafe_allow_html=True)
 ############################################################################################################
 
 # Logo e menu lateral
-logo = Image.open('logo.jpg')
+logo = Image.open('logo2.jpeg')
 st.sidebar.image(logo, use_container_width=True)
 
 with st.sidebar:
@@ -88,7 +88,7 @@ if selected_option == "Sobre o App":
     """, unsafe_allow_html=True)
     st.markdown("## <span style='color:#DC0000'>Sobre o Aplicativo</span>", unsafe_allow_html=True)
     st.write("""
-        Este é um dashboard em formato Streamlit desenvolvido por Xander e Lucas no programa de internado Hub de AI SENAI-Londrina.
+        Dashboard desenvolvido pelos residentes Xander Cortez Pinzas e Lucas Gabriel dos Santos do Hub de IA do Senai - Londrina.
     """)
 ############################################################################################################
 ######################################### PÁGINA 2 - FILTROS ###############################################
@@ -112,7 +112,7 @@ elif selected_option == "Filtros":
     uf = st.selectbox('Selecione um Estado:', estados)
     df_agrupado = data.groupby(['uf', 'Ano']).sum().reset_index()
     df_filtrado = df_agrupado[df_agrupado['uf'] == uf]
-    campos_desejados = ['id','Ano','dia_semana', 'municipio']
+    campos_desejados = ['Ano','dia_semana', 'municipio']
     st.dataframe(df_filtrado[campos_desejados], use_container_width=True)
     
 ###########################################################################################################
@@ -168,6 +168,21 @@ elif selected_option == "Filtros":
     plt.grid(True)
     plt.tight_layout()
     st.pyplot(plt)
+
+    # Gráfico de acidentes por dia da semana
+    st.subheader("Acidentes por Dia da Semana")
+    acidentes_por_dia = data['dia_semana'].value_counts().reindex(
+    ['segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado', 'domingo' ])
+    plt.figure(figsize=(12, 6))
+    sns.lineplot(x=acidentes_por_dia.index, y=acidentes_por_dia.values, marker="o", color="blue")
+    plt.title("Acidentes por Dia da Semana", fontsize=16)
+    plt.xlabel("Dia da Semana", fontsize=12)
+    plt.ylabel("Número de Acidentes", fontsize=12)
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+    st.pyplot(plt)
+
 
     # Gráfico de condições climáticas
     st.subheader("Condições Climáticas e Número de Acidentes")
