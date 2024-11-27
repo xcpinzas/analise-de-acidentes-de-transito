@@ -180,7 +180,6 @@ elif selected_option == "Filtros":
     plt.ylabel("Número de Acidentes", fontsize=12)
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
     st.pyplot(plt)
 
 
