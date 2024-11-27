@@ -1,0 +1,9 @@
+# Ignorar todas as pastas e arquivos da pasta 'csv'
+csv/
+
+# Ignorar todas as pastas e arquivos da pasta 'dados'
+dados/
+
+# Opcional: Ignore arquivos temporários do sistema
+*.DS_Store
+*.tmp
