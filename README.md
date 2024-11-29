@@ -6,7 +6,7 @@
 
 ## Usage
 
-Para usar este projeto, primeiro certifique-se de ter instalado python 3
+Para usar este projeto, primeiro certifique-se de ter instalado python 3.12.7
 
 Depois disso, você deve:
 1. Criar o ambiente virtual 
